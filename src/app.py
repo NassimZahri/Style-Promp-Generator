@@ -17,8 +17,13 @@ def index():
         file.save(image_path)
 
         image_url = upload_image_to_azure(image_path)
-        print(f"Image uploaded to Azure: {image_url}")
-        question = "Generate a cinematic, Midjourney-style prompt for this image."
+        question = (
+            "Analyze this image and generate a detailed, cinematic, MidJourney-style prompt "
+            "that captures its artistic style, mood, and composition. Include any references "
+            "to existing products, movies, anime, or art styles that the image resembles. "
+            "The prompt should be descriptive enough to recreate a similar image."
+            "The output must be the prompt only, without any additional text."
+        )
         prompt = generate_image_prompt(image_url, question)
 
         return render_template("result.html", prompt=prompt)
