@@ -12,11 +12,12 @@ RUN apt-get update && apt-get install -y build-essential && \
     pip install --no-cache-dir -r requirements.txt && \
     apt-get remove -y build-essential && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
-# Expose port 80 for Flask
-EXPOSE 80
+# Expose port 5000 for Flask
+EXPOSE 5000
 
 # Define environment variable for Flask
 ENV FLASK_APP=/app/src/app.py
 
-# Run the application on port 80
-CMD ["flask", "run", "--host=0.0.0.0", "--port=80"]
+# Run the application on port 5000
+ENV FLASK_RUN_PORT=5000
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
